@@ -36,6 +36,8 @@ const FormAddRls = () => {
     async function getData() {
       await axios.get(urlEvd).then((json) => setEvd(json.data))
       await axios.get(urlHpt).then((json) => setHpt(json.data))
+      // console.log(evd)
+      // console.log(hpt)
     }
 
     async function getRls() {
@@ -51,12 +53,8 @@ const FormAddRls = () => {
   const saveData = async (e) => {
     e.preventDefault()
 
-    // if (mb === '' || md === '') {
-    //   alert('Input mb atau md tidak boleh kosong')
-    //   return false
-    // }
-
     try {
+      // console.log(rlsKode + hptId + evdId + mb + md)
       await axios.post(url, {
         kode_rule: rlsKode,
         penyakit_id: hptId,
@@ -78,10 +76,10 @@ const FormAddRls = () => {
       return (
         <option
           id='hpt'
-          key={index}
+          key={hpt.penyakit_id}
           value={hpt.kode_penyakit}
           data-value={hpt.nama_penyakit}
-          data-id={hpt.id}
+          data-id={hpt.penyakit_id}
         >
           {hpt.kode_penyakit + ' - ' + hpt.nama_penyakit}
         </option>
@@ -94,10 +92,10 @@ const FormAddRls = () => {
       return (
         <option
           id='evd'
-          key={index}
+          key={evd.gejala_id}
           value={evd.kode_gejala}
           data-value={evd.nama_gejala}
-          data-id={evd.id}
+          data-id={evd.gejala_id}
         >
           {evd.kode_gejala + ' - ' + evd.nama_gejala}
         </option>
@@ -111,16 +109,16 @@ const FormAddRls = () => {
     // console.log(dataset)
     setHptKode(kode)
     setHptNama(dataset.value)
-    setHptId(dataset.penyakit_id)
+    setHptId(dataset.id)
   }
 
   const EvdHandler = async (e) => {
     const kode = e.target.value
     const dataset = e.target.options[e.target.selectedIndex].dataset
-    // console.log(dataset)
+    // console.log(dataset.id)
     setEvdKode(kode)
     setEvdNama(dataset.value)
-    setEvdId(dataset.gejala_id)
+    setEvdId(dataset.id)
   }
 
   const inputHandler = async (e) => {
@@ -154,13 +152,13 @@ const FormAddRls = () => {
       <div className='w-full sm:px-16 px-4 py-10 my-6 overflow-hidden bg-white rounded-lg lg:max-w-4xl'>
         <div className='mb-4'>
           <h1 className=' text-2xl font-bold decoration-gray-400'>
-            Tambah aturan baru
+            Tambah Aturan Baru
           </h1>
         </div>
 
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
           <form name='rlsForm' onSubmit={saveData}>
-            <p className='text-center'>{msg}</p>
+            <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>
                 Kode Rule
@@ -183,7 +181,7 @@ const FormAddRls = () => {
                 className='w-2/3 p-2 text-sm block mt-1 border-gray-400 rounded-md border shadow-sm text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
                 value={hptKode}
                 data-value={hptNama}
-                data-id={hptId}
+                data-hpt={hptId}
                 onChange={(e) => HptHandler(e)}
               >
                 {renderHpt()}

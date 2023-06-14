@@ -5,11 +5,13 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 const FormEditRls = () => {
   //data from db by id and changed by select option
   const [hptKode, setHptKode] = useState('')
-  const [hptNama, setHptNama] = useState('')
   const [evdKode, setEvdKode] = useState('')
+  const [hptNama, setHptNama] = useState('')
+  const [hptNama2, setHptNama2] = useState('')
   const [evdNama, setEvdNama] = useState('')
-  const [hptId, setHptId] = useState('1')
-  const [evdId, setEvdId] = useState('1')
+  const [evdNama2, setEvdNama2] = useState('')
+  const [hptId, setHptId] = useState('')
+  const [evdId, setEvdId] = useState('')
   const [mb, setMb] = useState('')
   const [md, setMd] = useState('')
 
@@ -41,29 +43,30 @@ const FormEditRls = () => {
   useEffect(() => {
     async function getData() {
       const res = await axios.get(urlRls)
-      await axios.get(urlEvd).then((json) => setEvd(json.data))
       await axios.get(urlHpt).then((json) => setHpt(json.data))
-
-      //set data for db validation
-      // setIdHpt(res.data.penyakit_id)
-      // setIdEvd(res.data.gejala_id)
+      await axios.get(urlEvd).then((json) => setEvd(json.data))
 
       //set data to display on output
       setHptId(res.data.penyakit_id)
       setEvdId(res.data.gejala_id)
       setHptKode(res.data.kode_penyakit)
-      setHptNama(res.data.nama_penyakit)
+      setHptNama(res.data.tbl_penyakit.nama_penyakit)
       setEvdKode(res.data.kode_gejala)
-      setEvdNama(res.data.nama_gejala)
+      setEvdNama(res.data.tbl_gejala.nama_gejala)
       setMb(res.data.mb)
       setMd(res.data.md)
-      // setCf(res.data.cf)
+
+      // set p for data sebelumnya
+      setHptNama2(res.data.tbl_penyakit.nama_penyakit)
+      setEvdNama2(res.data.tbl_gejala.nama_gejala)
     }
+
     getData()
   }, [urlEvd, urlHpt, urlRls])
 
   const saveData = async (e) => {
     e.preventDefault()
+    // console.log(hptId, evdId, mb, md)
     try {
       await axios.post(url, {
         penyakit_id: hptId,
@@ -80,11 +83,11 @@ const FormEditRls = () => {
   }
 
   const renderHpt = () => {
-    return hpt.map((hpt, index) => {
+    return hpt.map((hpt) => {
       return (
         <option
           id='hpt'
-          key={index}
+          key={hpt.penyakit_id}
           value={hpt.kode_penyakit}
           data-value={hpt.nama_penyakit}
           data-id={hpt.penyakit_id}
@@ -96,11 +99,11 @@ const FormEditRls = () => {
   }
 
   const renderEvd = () => {
-    return evd.map((evd, index) => {
+    return evd.map((evd) => {
       return (
         <option
           id='evd'
-          key={index}
+          key={evd.gejala_id}
           value={evd.kode_gejala}
           data-value={evd.nama_gejala}
           data-id={evd.gejala_id}
@@ -111,25 +114,25 @@ const FormEditRls = () => {
     })
   }
 
-  const HptHandler = (e) => {
+  const HptHandler = async (e) => {
     const kode = e.target.value
     const dataset = e.target.options[e.target.selectedIndex].dataset
-    // console.log(dataset)
     setHptKode(kode)
     setHptNama(dataset.value)
     setHptId(dataset.id)
+    // console.log(dataset)
   }
 
-  const EvdHandler = (e) => {
+  const EvdHandler = async (e) => {
     const kode = e.target.value
     const dataset = e.target.options[e.target.selectedIndex].dataset
-    // console.log(dataset)
     setEvdKode(kode)
     setEvdNama(dataset.value)
     setEvdId(dataset.id)
+    // console.log(dataset)
   }
 
-  const inputHandler = (e) => {
+  const inputHandler = async (e) => {
     const value = e.target.value
     const name = e.target.name
     const newValues = {
@@ -158,12 +161,13 @@ const FormEditRls = () => {
 
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
           <form name='rlsForm' onSubmit={saveData}>
-            <p className='text-center'>{msg}</p>
-            <div>
-              <label className='block text-sm font-bold text-gray-700'>
+            <p className='text-center text-xs text-red-500'>{msg}</p>
+            <div className='mt-4'>
+              <label className='block m-0 text-md font-bold text-gray-700'>
                 Penyakit
               </label>
               <div>
+                <p className='text-xs'>penyakit sebelumnya: {hptNama2}</p>
                 <select
                   className='w-2/3 p-2 text-sm block mt-1 border-gray-400 rounded-md border shadow-sm text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
                   value={hptKode}
@@ -175,11 +179,12 @@ const FormEditRls = () => {
                 </select>
               </div>
             </div>
-            <div>
-              <label className='block pt-4 text-sm font-bold text-gray-700'>
+            <div className='mt-4'>
+              <label className='block m-0 text-md font-bold text-gray-700'>
                 Gejala
               </label>
               <div>
+                <p className='text-xs'>gejala sebelumnya: {evdNama2}</p>
                 <select
                   className='w-2/3 p-2 text-sm block mt-1 border-gray-400 rounded-md border shadow-sm text-black focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
                   value={evdKode}
@@ -191,8 +196,8 @@ const FormEditRls = () => {
                 </select>
               </div>
             </div>
-            <div>
-              <label className='block pt-4 text-sm font-bold text-gray-700'>
+            <div className='mt-4'>
+              <label className='block m-0 text-md font-bold text-gray-700'>
                 MB "Measure of Belief" (contoh: 0.50)
               </label>
               <div>
@@ -210,8 +215,8 @@ const FormEditRls = () => {
               </div>
             </div>
 
-            <div>
-              <label className='block pt-4 text-sm font-bold text-gray-700'>
+            <div className='mt-4'>
+              <label className='block m-0 text-md font-bold text-gray-700'>
                 MD "Measure of Disbelief" (contoh: 0.10)
               </label>
               <div>
@@ -229,7 +234,7 @@ const FormEditRls = () => {
               </div>
             </div>
 
-            <div className='pt-4'>
+            <div className='mt-4'>
               <button
                 type='submit'
                 className='px-6 py-2 mr-1 text-sm font-semibold rounded-md shadow-md text-sky-100 bg-sky-500 hover:bg-sky-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'

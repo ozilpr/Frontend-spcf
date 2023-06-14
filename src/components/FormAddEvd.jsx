@@ -41,8 +41,8 @@ const FormAddEvd = () => {
   }
 
   return (
-    <div className='flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0'>
-      <div className='w-full sm:px-16 px-4 py-10 my-6 overflow-hidden bg-white rounded-lg lg:max-w-4xl'>
+    <div className='flex flex-col items-center pt-4 bg-gray-100 sm:justify-center sm:pt-0'>
+      <div className='w-full sm:px-16 px-4 py-10 my-1 overflow-hidden bg-white rounded-lg lg:max-w-4xl'>
         <div className='mb-4'>
           <h1 className=' text-2xl font-bold decoration-gray-400'>
             Tambah gejala baru
@@ -50,7 +50,7 @@ const FormAddEvd = () => {
         </div>
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
           <form name='evdForm' onSubmit={saveData}>
-            <p className='text-center'>{msg}</p>
+            <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>
                 Kode Gejala

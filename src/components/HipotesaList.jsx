@@ -33,20 +33,20 @@ const HipotesaList = () => {
   const renderTable = () => {
     return data.map((hpt, index) => {
       return (
-        <tr key={hpt.penyakit_id}>
-          <td className='px-1 py-1 border border-gray-200 text-center'>
-            {index + 1}
+        <tr key={hpt.penyakit_id} className=''>
+          <td className='px-1 py-1 mx-auto border border-gray-200 align-middle'>
+            <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
           {/* <td className='px-2 py-1 border-b border-gray-200 text-center'>
             
           </td> */}
-          <td className='px-3 py-1 border-b border-gray-200'>
+          <td className='px-3 py-1 border-b border-gray-200 text-left align-middle'>
             {hpt.kode_penyakit + ' - ' + hpt.nama_penyakit}
           </td>
-          <td className='px-2 py-1 border border-gray-200'>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
             {hpt.detail_penyakit}
           </td>
-          <td className='px-2 py-1 border border-gray-200'>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
             {hpt.sm_penyakit}
           </td>
           <td className='text-sm font-medium text-center border border-gray-200'>
@@ -82,7 +82,7 @@ const HipotesaList = () => {
       <div className=' mt-10 mb-4'>
         <Link
           to={'/add-hpt'}
-          className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
+          className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-400 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
         >
           Tambah baru
         </Link>
@@ -90,23 +90,23 @@ const HipotesaList = () => {
         <div className='flex flex-col my-3'>
           <div className='overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
             <div className='inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg'>
-              <p className='text-center'>{msg}</p>
+              <p className='text-center text-xs text-red-500'>{msg}</p>
               <table id='hpt' className='min-w-full'>
                 <thead>
-                  <tr>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                  <tr className='text-center'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       No
                     </th>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Penyakit
                     </th>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Detail Penyakit
                     </th>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Solusi Masalah Penyakit
                     </th>
-                    <th className='px-2 py-3 text-sm text-center text-gray-500 md:w-auto border-b border-gray-200 bg-gray-50" colspan="3"'>
+                    <th className='px-2 py-3 text-sm text-white md:w-auto border-b border-gray-200 bg-black colspan="3"'>
                       Action
                     </th>
                   </tr>

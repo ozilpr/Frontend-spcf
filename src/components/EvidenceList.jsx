@@ -34,13 +34,13 @@ const EvidenceList = () => {
     return data.map((evd, index) => {
       return (
         <tr key={evd.gejala_id}>
-          <td className='px-2 py-1 border border-gray-200 text-center'>
-            {index + 1}
+          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+            <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200 text-center'>
-            {evd.kode_gejala}
+          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+            <div style={{ textAlign: 'center' }}>{evd.kode_gejala}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200'>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
             {evd.nama_gejala}
           </td>
           <td className='text-sm font-medium text-center border border-gray-200'>
@@ -87,20 +87,20 @@ const EvidenceList = () => {
         <div className='flex flex-col my-3'>
           <div className='overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
             <div className='inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg'>
-              <p className='text-center'>{msg}</p>
+              <p className='text-center text-xs text-red-500'>{msg}</p>
               <table id='evd' className='min-w-full'>
                 <thead>
-                  <tr>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                  <tr className='text-center'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       No
                     </th>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Kode Gejala
                     </th>
-                    <th className='px-2 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Nama Gejala
                     </th>
-                    <th className='px-2 py-3 text-sm text-center text-gray-500 md:w-auto border-b border-gray-200 bg-gray-50" colspan="3"'>
+                    <th className='px-2 py-3 text-sm text-center text-white md:w-auto border-b border-gray-200 bg-black colspan="3"'>
                       Action
                     </th>
                   </tr>

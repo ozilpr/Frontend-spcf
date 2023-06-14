@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
+import Layout from './Layout'
+import FormEditHpt from '../components/FormEditHpt'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getMe } from '../features/authSlice'
-import Layout from './Layout'
-import UserList from '../components/UserList'
 
-const User = () => {
+const EditHpt = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { isError, user } = useSelector((state) => state.auth)
@@ -25,9 +25,9 @@ const User = () => {
 
   return (
     <Layout>
-      <UserList />
+      <FormEditHpt />
     </Layout>
   )
 }
 
-export default User
+export default EditHpt

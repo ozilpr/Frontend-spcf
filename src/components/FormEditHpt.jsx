@@ -61,7 +61,7 @@ const FormEditHpt = () => {
 
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
           <form name='hptForm' onSubmit={saveData}>
-            <p className='text-center'>{msg}</p>
+            <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>
                 Kode Penyakit
@@ -126,7 +126,7 @@ const FormEditHpt = () => {
               >
                 Perbarui
               </button>
-              <Link to={'/get-hpt'} className='button mr-4 is-success my-1'>
+              <Link to={'/get-hpt'} className='mr-4 my-1'>
                 <button className='px-6 py-2 ml-1 text-sm font-semibold text-gray-100 bg-gray-400 rounded-md shadow-md hover:bg-gray-600 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'>
                   Batal
                 </button>

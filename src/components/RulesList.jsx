@@ -35,22 +35,26 @@ const RulesList = () => {
     return data.map((rls, index) => {
       return (
         <tr key={rls.id}>
-          <td className='px-2 py-1 border-b border-gray-200 text-center'>
-            {index + 1}
+          <td className='px-2 py-1 border-b border-gray-200 align-middle'>
+            <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          <td className='px-2 py-1 border text-center border-gray-200'>
-            {'R' + rls.penyakit_id}
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
+            <div style={{ textAlign: 'center' }}>{'R' + rls.penyakit_id}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200'>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
             {rls.tbl_penyakit.nama_penyakit}
           </td>
-          <td className='px-2 py-1 border-b border-gray-200'>
+          <td className='px-2 py-1 border-b border-gray-200 align-middle'>
             {rls.tbl_gejala.nama_gejala}
           </td>
-          <td className='px-2 py-1 border border-gray-200'>{rls.mb}</td>
-          <td className='px-2 py-1 border border-gray-200'>{rls.md}</td>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
+            <div style={{ textAlign: 'center' }}>{rls.mb}</div>
+          </td>
+          <td className='px-2 py-1 border border-gray-200 align-middle'>
+            <div style={{ textAlign: 'center' }}>{rls.md}</div>
+          </td>
           {/* <td className='centerText'>{rls.cf}</td> */}
-          <td className='text-sm font-medium text-center border-b border-gray-200'>
+          <td className='text-sm font-medium border-b border-gray-200 align-middle'>
             <div className='text-center px-2 py-1'>
               <Link to={`/edit-rls?id=${rls.id}`}>
                 <button
@@ -87,30 +91,30 @@ const RulesList = () => {
         <div className='flex flex-col my-3'>
           <div className='overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
             <div className='inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg'>
-              <p className='text-center'>{msg}</p>
+              <p className='text-center text-xs text-red-500'>{msg}</p>
               <table id='rl' className='min-w-full'>
                 <thead>
-                  <tr>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                  <tr className='text-center items-center'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 text-center md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       No
                     </th>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       Kode Rule
                     </th>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       Nama Penyakit
                     </th>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       Nama Gejala
                     </th>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       MB
                     </th>
-                    <th className='px-3 py-3 text-xs font-medium leading-4 text-center md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
+                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       MD
                     </th>
                     {/* <th className='centerText'>CF</th> */}
-                    <th className='px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50" colspan="3"'>
+                    <th className='px-6 py-3 text-sm align-middle text-white border-b border-gray-200 bg-black colspan="3"'>
                       Action
                     </th>
                   </tr>
