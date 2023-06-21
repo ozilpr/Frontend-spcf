@@ -1,13 +1,13 @@
 /* eslint-disable default-case */
 import React from 'react'
+import Layout from './Layout'
+import FormDiagnose from '../diagnose/FormDiagnose'
 
 const Diagnosa = () => {
   return (
-    <div>
-      <textarea name='load' id='load' cols='60' rows='10'></textarea>
-      <input type='button' value='Load rules' />
-      <div name='workarea' id='workarea'></div>
-    </div>
+    <Layout>
+      <FormDiagnose />
+    </Layout>
   )
 }
 

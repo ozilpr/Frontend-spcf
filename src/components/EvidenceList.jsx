@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const EvidenceList = () => {
+  const { user } = useSelector((state) => state.auth)
+
   const [data, setData] = useState([])
   // error message
   const [msg, setMsg] = useState('')
@@ -43,29 +46,31 @@ const EvidenceList = () => {
           <td className='px-2 py-1 border border-gray-200 align-middle'>
             {evd.nama_gejala}
           </td>
-          <td className='text-sm font-medium text-center border border-gray-200'>
-            <div className='text-center px-2 py-1'>
-              <Link
-                to={`/edit-evd?id=${evd.gejala_id}`}
-                title='Edit'
-                className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
-              >
-                <button
+          {user && user.role === 'admin' && (
+            <td className='text-sm font-medium text-center border border-gray-200'>
+              <div className='text-center px-2 py-1'>
+                <Link
+                  to={`/edit-evd?id=${evd.gejala_id}`}
                   title='Edit'
                   className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
                 >
-                  Edit
+                  <button
+                    title='Edit'
+                    className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
+                  >
+                    Edit
+                  </button>
+                </Link>
+                <button
+                  title='Remove'
+                  onClick={() => deleteEvd(evd.gejala_id)}
+                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
+                >
+                  Delete
                 </button>
-              </Link>
-              <button
-                title='Remove'
-                onClick={() => deleteEvd(evd.gejala_id)}
-                className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
-              >
-                Delete
-              </button>
-            </div>
-          </td>
+              </div>
+            </td>
+          )}
         </tr>
       )
     })
@@ -77,12 +82,14 @@ const EvidenceList = () => {
         Tabel Gejala
       </h1>
       <div className=' mt-10 mb-4'>
-        <Link
-          to={'/add-evd'}
-          className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
-        >
-          Tambah baru
-        </Link>
+        {user && user.role === 'admin' && (
+          <Link
+            to={'/add-evd'}
+            className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
+          >
+            Tambah baru
+          </Link>
+        )}
 
         <div className='flex flex-col my-3'>
           <div className='overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
@@ -100,9 +107,11 @@ const EvidenceList = () => {
                     <th className='px-2 py-3 text-xs font-medium leading-4 md:w-auto text-gray-500 uppercase border-b border-gray-200 bg-gray-50'>
                       Nama Gejala
                     </th>
-                    <th className='px-2 py-3 text-sm text-center text-white md:w-auto border-b border-gray-200 bg-black colspan="3"'>
-                      Action
-                    </th>
+                    {user && user.role === 'admin' && (
+                      <th className='px-2 py-3 text-sm text-center text-white md:w-auto border-b border-gray-200 bg-black colspan="3"'>
+                        Action
+                      </th>
+                    )}
                   </tr>
                 </thead>
 

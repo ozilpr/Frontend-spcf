@@ -26,28 +26,71 @@ const Sidebar = () => {
       <aside className='menu pl-2 has-shadow'>
         <p className='menu-label pt-2'>General</p>
         <ul className='menu-list'>
-          <li>
-            <NavLink to={'/dashboard'}>
-              <IoHome className='inline' /> Dashboard
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to={'/get-hpt'}>
-              <IoCaretForwardOutline className='inline' /> Hipotesa
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={'/get-evd'}>
-              <IoCaretForwardOutline className='inline' /> Gejala
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={'/get-rls'}>
-              <IoCaretForwardOutline className='inline' /> Rules
-            </NavLink>
-          </li>
+          {!user && (
+            <div>
+              <li>
+                <button
+                  onClick={logout}
+                  className='text-white p-2 text-center w-full bg-red-500'
+                >
+                  Log in
+                </button>
+              </li>
+            </div>
+          )}
+          {user && (
+            <li>
+              <NavLink to={'/dashboard'}>
+                <IoHome className='inline' /> Dashboard
+              </NavLink>
+            </li>
+          )}
+          {user && user.role === 'admin' && (
+            <div>
+              <li>
+                <NavLink to={'/get-hpt'}>
+                  <IoCaretForwardOutline className='inline' /> Hipotesa
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/get-evd'}>
+                  <IoCaretForwardOutline className='inline' /> Gejala
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/get-rls'}>
+                  <IoCaretForwardOutline className='inline' /> Rules
+                </NavLink>
+              </li>
+              {/* <li>
+                <NavLink to={'/diagnose'}>
+                  <IoCaretForwardOutline className='inline' /> Diagnosis
+                </NavLink>
+              </li> */}
+            </div>
+          )}
+          {/* user get */}
+          {user && user.role === 'user' && (
+            <div>
+              <li>
+                <NavLink to={'/diagnose'}>
+                  <IoCaretForwardOutline className='inline' /> Diagnosis
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/user-get-hpt'}>
+                  <IoCaretForwardOutline className='inline' /> Hipotesa
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={'/user-get-evd'}>
+                  <IoCaretForwardOutline className='inline' /> Gejala
+                </NavLink>
+              </li>
+            </div>
+          )}
         </ul>
+
         {user && user.role === 'admin' && (
           <div>
             <p className='menu-label'>Admin</p>
@@ -60,14 +103,29 @@ const Sidebar = () => {
             </ul>
           </div>
         )}
-        <p className='menu-label'>Settings</p>
-        <ul className='menu-list'>
-          <li>
-            <button onClick={logout} className='button is-white'>
-              <IoLogOut /> Log Out
-            </button>
-          </li>
-        </ul>
+        {user && user.role === 'admin' && (
+          <div>
+            <p className='menu-label'>Settings</p>
+            <ul className='menu-list'>
+              <li>
+                <button onClick={logout} className='button is-white'>
+                  <IoLogOut /> Log Out
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+        {user && user.role === 'user' && (
+          <div>
+            <p className='menu-label'>Settings</p>
+            <ul className='menu-list'></ul>
+            <li>
+              <button onClick={logout} className='button is-white'>
+                <IoLogOut /> Log Out
+              </button>
+            </li>
+          </div>
+        )}
       </aside>
     </div>
   )

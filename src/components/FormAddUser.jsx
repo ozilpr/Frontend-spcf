@@ -41,7 +41,7 @@ const FormAddUser = () => {
         return false
       }
 
-      console.log(kode, user, password, phone, role)
+      // console.log(kode, user, password, confPassword, phone, role)
       await axios.post(url, {
         kode_pendaftaran: kode,
         nama_user: user,
@@ -109,7 +109,7 @@ const FormAddUser = () => {
                 value={kode}
                 disabled
                 onChange={(e) => setKode(e.target.value)}
-                placeholder='Kode Gejala'
+                placeholder='Kode Pendaftaran'
               />
             </div>
 

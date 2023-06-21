@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 const RulesList = () => {
+  const { user } = useSelector((state) => state.auth)
+
   const url = 'http://localhost:5000/get-rls'
   const [data, setData] = useState([])
 
@@ -54,25 +57,27 @@ const RulesList = () => {
             <div style={{ textAlign: 'center' }}>{rls.md}</div>
           </td>
           {/* <td className='centerText'>{rls.cf}</td> */}
-          <td className='text-sm font-medium border-b border-gray-200 align-middle'>
-            <div className='text-center px-2 py-1'>
-              <Link to={`/edit-rls?id=${rls.id}`}>
+          {user && user.role === 'admin' && (
+            <td className='text-sm font-medium border-b border-gray-200 align-middle'>
+              <div className='text-center px-2 py-1'>
+                <Link to={`/edit-rls?id=${rls.id}`}>
+                  <button
+                    title='Edit'
+                    className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
+                  >
+                    Edit
+                  </button>
+                </Link>
                 <button
-                  title='Edit'
-                  className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
+                  title='Remove'
+                  onClick={() => deleteRls(rls.id)}
+                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
                 >
-                  Edit
+                  Delete
                 </button>
-              </Link>
-              <button
-                title='Remove'
-                onClick={() => deleteRls(rls.id)}
-                className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
-              >
-                Delete
-              </button>
-            </div>
-          </td>
+              </div>
+            </td>
+          )}
         </tr>
       )
     })
@@ -82,12 +87,14 @@ const RulesList = () => {
     <div className='p-5 mb-5'>
       <h1 className='sm:text-3xl font-bold decoration-gray-400'>Tabel Rules</h1>
       <div className=' mt-10 mb-4 '>
-        <Link
-          to={'/add-rls'}
-          className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
-        >
-          Tambah baru
-        </Link>
+        {user && user.role === 'admin' && (
+          <Link
+            to={'/add-rls'}
+            className='px-6 py-2 text-sm font-semibold rounded-md shadow-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300'
+          >
+            Tambah baru
+          </Link>
+        )}
         <div className='flex flex-col my-3'>
           <div className='overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
             <div className='inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg'>
@@ -114,9 +121,11 @@ const RulesList = () => {
                       MD
                     </th>
                     {/* <th className='centerText'>CF</th> */}
-                    <th className='px-6 py-3 text-sm align-middle text-white border-b border-gray-200 bg-black colspan="3"'>
-                      Action
-                    </th>
+                    {user && user.role === 'admin' && (
+                      <th className='px-6 py-3 text-sm align-middle text-white border-b border-gray-200 bg-black colspan="3"'>
+                        Action
+                      </th>
+                    )}
                   </tr>
                 </thead>
                 <tbody className='px-4 bg-white'>{renderTable()}</tbody>

@@ -20,6 +20,8 @@ const Hipotesa = () => {
     }
     if (user && user.role !== 'admin') {
       navigate('/dashboard')
+    } else if (user && user.role !== 'user') {
+      navigate('/dashboard')
     }
   }, [isError, user, navigate])
 
