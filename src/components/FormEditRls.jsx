@@ -15,10 +15,6 @@ const FormEditRls = () => {
   const [mb, setMb] = useState('')
   const [md, setMd] = useState('')
 
-  //data for validate input
-  // const [idEvd, setIdEvd] = useState('')
-  // const [idHpt, setIdHpt] = useState('')
-
   //data from database
   const [evd, setEvd] = useState([])
   const [hpt, setHpt] = useState([])
@@ -66,7 +62,7 @@ const FormEditRls = () => {
 
   const saveData = async (e) => {
     e.preventDefault()
-    // console.log(hptId, evdId, mb, md)
+
     try {
       await axios.post(url, {
         penyakit_id: hptId,
@@ -120,7 +116,6 @@ const FormEditRls = () => {
     setHptKode(kode)
     setHptNama(dataset.value)
     setHptId(dataset.id)
-    // console.log(dataset)
   }
 
   const EvdHandler = async (e) => {
@@ -129,7 +124,6 @@ const FormEditRls = () => {
     setEvdKode(kode)
     setEvdNama(dataset.value)
     setEvdId(dataset.id)
-    // console.log(dataset)
   }
 
   const inputHandler = async (e) => {
@@ -140,15 +134,11 @@ const FormEditRls = () => {
       [name]: value,
     }
     if (name === 'mb') {
-      // console.log(value)
       setMb(value)
     } else if (name === 'md') {
-      // console.log(value)
       setMd(value)
     }
-    // else if (name === 'cf') {
-    //   setCf(value)
-    // }
+
     setValues(newValues)
   }
 

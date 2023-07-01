@@ -41,7 +41,6 @@ const FormAddUser = () => {
         return false
       }
 
-      // console.log(kode, user, password, confPassword, phone, role)
       await axios.post(url, {
         kode_pendaftaran: kode,
         nama_user: user,

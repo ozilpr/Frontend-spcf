@@ -18,9 +18,11 @@ const Evidence = () => {
     if (isError) {
       navigate('/')
     }
-    if (user && user.role !== 'admin') {
-      navigate('/dashboard')
-    } else if (user && user.role !== 'user') {
+    if (user && user.role === 'admin') {
+      navigate('/get-evd')
+    } else if (user && user.role === 'user') {
+      navigate('/get-evd')
+    } else {
       navigate('/dashboard')
     }
   }, [isError, user, navigate])

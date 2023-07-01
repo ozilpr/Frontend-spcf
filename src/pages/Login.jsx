@@ -35,10 +35,12 @@ const Login = () => {
   }
 
   return (
-    <div className=''>
-      {/* <h1 className='sm:text-3xl is-size-5 has-text-centered has-text-weight-bold'></h1> */}
+    <div>
       <div className='bg-orange-300 h-screen'>
         <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
+          <h1 className='font-bold text-3xl text-black m-7'>
+            Sistem Pakar Diagnosis Penyakit Kucing Persia
+          </h1>
           <div className='w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 '>
             <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
               <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl '>
@@ -93,8 +95,11 @@ const Login = () => {
                   >
                     {isLoading ? 'Loading...' : 'Login'}
                   </button>
+                  <p className='mt-3 text-sm font-bold'>
+                    atau login sebagai guest
+                  </p>
                   <Link to={'/diagnose'}>
-                    <button className='mt-2 w-2/3 md:w-2/3 text-white hover:text-black bg-orange-500 hover:bg-orange-100 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
+                    <button className='w-2/3 md:w-2/3 text-white hover:text-black bg-orange-500 hover:bg-orange-100 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
                       Login as Guest
                     </button>
                   </Link>

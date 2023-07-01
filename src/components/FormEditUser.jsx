@@ -14,8 +14,6 @@ const FormEditUser = () => {
   const [user1, setUser1] = useState('')
   const [phone1, setPhone1] = useState('')
 
-  // const [letter, setLetter] = useState('')
-  // const [number, setNumber] = useState('')
   const nav = useNavigate()
   const [searchParams] = useSearchParams()
   const id = searchParams.get('id')
@@ -47,7 +45,7 @@ const FormEditUser = () => {
         setMsg('Input nama tidak boleh kosong')
         return false
       }
-      // console.log(kode, user, password, phone, role)
+
       await axios.post(url, {
         kode_pendaftaran: kode,
         nama_user: user,

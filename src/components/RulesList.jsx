@@ -14,7 +14,6 @@ const RulesList = () => {
 
   useEffect(() => {
     getRls()
-    // console.log(data)
   }, [])
 
   const getRls = async () => {
@@ -56,7 +55,6 @@ const RulesList = () => {
           <td className='px-2 py-1 border border-gray-200 align-middle'>
             <div style={{ textAlign: 'center' }}>{rls.md}</div>
           </td>
-          {/* <td className='centerText'>{rls.cf}</td> */}
           {user && user.role === 'admin' && (
             <td className='text-sm font-medium border-b border-gray-200 align-middle'>
               <div className='text-center px-2 py-1'>
@@ -120,7 +118,7 @@ const RulesList = () => {
                     <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
                       MD
                     </th>
-                    {/* <th className='centerText'>CF</th> */}
+
                     {user && user.role === 'admin' && (
                       <th className='px-6 py-3 text-sm align-middle text-white border-b border-gray-200 bg-black colspan="3"'>
                         Action

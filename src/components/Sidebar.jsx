@@ -48,6 +48,11 @@ const Sidebar = () => {
           {user && user.role === 'admin' && (
             <div>
               <li>
+                <NavLink to={'/diagnose'}>
+                  <IoCaretForwardOutline className='inline' /> Diagnosis
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to={'/get-hpt'}>
                   <IoCaretForwardOutline className='inline' /> Hipotesa
                 </NavLink>
@@ -62,14 +67,8 @@ const Sidebar = () => {
                   <IoCaretForwardOutline className='inline' /> Rules
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink to={'/diagnose'}>
-                  <IoCaretForwardOutline className='inline' /> Diagnosis
-                </NavLink>
-              </li> */}
             </div>
           )}
-          {/* user get */}
           {user && user.role === 'user' && (
             <div>
               <li>
@@ -78,12 +77,12 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={'/user-get-hpt'}>
+                <NavLink to={'/get-hpt'}>
                   <IoCaretForwardOutline className='inline' /> Hipotesa
                 </NavLink>
               </li>
               <li>
-                <NavLink to={'/user-get-evd'}>
+                <NavLink to={'/get-evd'}>
                   <IoCaretForwardOutline className='inline' /> Gejala
                 </NavLink>
               </li>

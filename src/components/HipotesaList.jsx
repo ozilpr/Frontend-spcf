@@ -40,9 +40,6 @@ const HipotesaList = () => {
           <td className='px-1 py-1 mx-auto border border-gray-200 align-middle'>
             <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          {/* <td className='px-2 py-1 border-b border-gray-200 text-center'>
-            
-          </td> */}
           <td className='px-3 py-1 border-b border-gray-200 text-left align-middle'>
             {hpt.kode_penyakit + ' - ' + hpt.nama_penyakit}
           </td>

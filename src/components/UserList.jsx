@@ -5,12 +5,12 @@ import axios from 'axios'
 const UserList = () => {
   const url = 'http://localhost:5000/get-user'
   const [data, setData] = useState([])
+
   // error message
   const [msg, setMsg] = useState('')
 
   useEffect(() => {
     getUser()
-    // console.log(data)
   }, [])
 
   const getUser = async () => {

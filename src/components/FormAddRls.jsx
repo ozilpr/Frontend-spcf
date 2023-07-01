@@ -13,7 +13,6 @@ const FormAddRls = () => {
   const [hptId, setHptId] = useState('1')
   const [mb, setMb] = useState('')
   const [md, setMd] = useState('')
-  // const [cf, setCf] = useState('')
 
   //data from database
   const [evd, setEvd] = useState([])
@@ -36,8 +35,6 @@ const FormAddRls = () => {
     async function getData() {
       await axios.get(urlEvd).then((json) => setEvd(json.data))
       await axios.get(urlHpt).then((json) => setHpt(json.data))
-      // console.log(evd)
-      // console.log(hpt)
     }
 
     async function getRls() {
@@ -54,7 +51,6 @@ const FormAddRls = () => {
     e.preventDefault()
 
     try {
-      // console.log(rlsKode + hptId + evdId + mb + md)
       await axios.post(url, {
         kode_rule: rlsKode,
         penyakit_id: hptId,
@@ -106,7 +102,7 @@ const FormAddRls = () => {
   const HptHandler = async (e) => {
     const kode = e.target.value
     const dataset = e.target.options[e.target.selectedIndex].dataset
-    // console.log(dataset)
+
     setHptKode(kode)
     setHptNama(dataset.value)
     setHptId(dataset.id)
@@ -115,7 +111,7 @@ const FormAddRls = () => {
   const EvdHandler = async (e) => {
     const kode = e.target.value
     const dataset = e.target.options[e.target.selectedIndex].dataset
-    // console.log(dataset.id)
+
     setEvdKode(kode)
     setEvdNama(dataset.value)
     setEvdId(dataset.id)
@@ -129,23 +125,13 @@ const FormAddRls = () => {
       [name]: value,
     }
     if (name === 'mb') {
-      // console.log(value)
       setMb(value)
     } else if (name === 'md') {
-      // console.log(value)
       setMd(value)
     }
-    // else if (name === 'cf') {
-    //   setCf(value)
-    // }
+
     setValues(newValues)
   }
-
-  // const calculateCf = (newValues) => {
-  //   const { mb, md } = newValues
-  //   const cf = mb - md
-  //   setCf(cf.toFixed(1))
-  // }
 
   return (
     <div className='flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0'>
