@@ -34,19 +34,19 @@ const UserList = () => {
     return data.map((user) => {
       return (
         <tr key={user.id} className='text-center'>
-          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+          <td className='px-2 py-1 border border-gray-500 text-center align-middle'>
             {user.kode_pendaftaran}
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             {user.nama_user}
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             {user.no_hp}
           </td>
-          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+          <td className='px-2 py-1 border border-gray-500 text-center align-middle'>
             {user.role}
           </td>
-          <td className='text-sm font-medium text-center border-b border-gray-200'>
+          <td className='text-sm font-medium text-center border-b border-gray-500'>
             <div className='text-center px-2 py-1'>
               <Link to={`/edit-user?id=${user.id}`}>
                 <button

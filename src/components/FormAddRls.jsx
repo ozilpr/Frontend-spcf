@@ -29,7 +29,7 @@ const FormAddRls = () => {
   const url = `http://localhost:5000/add-rls`
   const urlEvd = `http://localhost:5000/get-evd`
   const urlHpt = `http://localhost:5000/get-hpt`
-  const res = `http://localhost:5000/get-rls`
+  const res = `http://localhost:5000/get-allrls`
 
   useEffect(() => {
     async function getData() {
@@ -143,7 +143,7 @@ const FormAddRls = () => {
         </div>
 
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
-          <form name='rlsForm' onSubmit={saveData}>
+          <form name='rlsForm' autocomplete='off' onSubmit={saveData}>
             <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>

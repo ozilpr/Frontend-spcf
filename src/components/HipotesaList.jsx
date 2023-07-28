@@ -37,20 +37,21 @@ const HipotesaList = () => {
     return data.map((hpt, index) => {
       return (
         <tr key={hpt.penyakit_id} className=''>
-          <td className='px-1 py-1 mx-auto border border-gray-200 align-middle'>
+          <td className='px-1 py-1 mx-auto border border-gray-500 align-top'>
             <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          <td className='px-3 py-1 border-b border-gray-200 text-left align-middle'>
-            {hpt.kode_penyakit + ' - ' + hpt.nama_penyakit}
+          <td className='px-3 py-1 border-b border-gray-500 align-top'>
+            <p className='text-center'>{hpt.kode_penyakit}</p>
+            <p className='text-center'>{hpt.nama_penyakit}</p>
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
-            {hpt.detail_penyakit}
+          <td className='px-2 py-1 border border-gray-500 align-top'>
+            <p className='text-justify'>{hpt.detail_penyakit}</p>
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
-            {hpt.sm_penyakit}
+          <td className='px-2 py-1 border border-gray-500 align-top'>
+            <p className='text-justify'>{hpt.sm_penyakit}</p>
           </td>
           {user && user.role === 'admin' && (
-            <td className='text-sm font-medium text-center border border-gray-200'>
+            <td className='text-sm font-medium text-center border border-gray-500 align-middle'>
               <div className='text-center px-2 py-1'>
                 <Link to={`/edit-hpt?id=${hpt.penyakit_id}`}>
                   <button
@@ -64,7 +65,7 @@ const HipotesaList = () => {
                 <button
                   title='Remove'
                   onClick={() => deleteHpt(hpt.penyakit_id)}
-                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
+                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-4 rounded-md  items-center'
                 >
                   Delete
                 </button>
@@ -118,7 +119,7 @@ const HipotesaList = () => {
                   </tr>
                 </thead>
 
-                <tbody>{renderTable()}</tbody>
+                <tbody className='bg-white'>{renderTable()}</tbody>
               </table>
             </div>
           </div>

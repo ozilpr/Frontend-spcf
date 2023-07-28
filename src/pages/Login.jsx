@@ -46,7 +46,11 @@ const Login = () => {
               <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl '>
                 Silahkan Login ke Akun Anda
               </h1>
-              <form className='space-y-4 md:space-y-6' onSubmit={Auth}>
+              <form
+                className='space-y-4 md:space-y-6'
+                autocomplete='off'
+                onSubmit={Auth}
+              >
                 {isError && (
                   <p className='text-center text-red-500'>{message}</p>
                 )}
@@ -62,7 +66,7 @@ const Login = () => {
                     onChange={(e) => setKode(e.target.value)}
                     className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5'
                     placeholder='Masukkan Kode Pendaftaran Anda'
-                    required=''
+                    required
                   />
                 </div>
                 <div>
@@ -77,7 +81,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder='Masukkan Password Anda'
                     className='mb-1 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5'
-                    required=''
+                    required
                   />
                   <input
                     type='checkbox'

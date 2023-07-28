@@ -21,7 +21,7 @@ const Rules = () => {
     if (user && user.role === 'admin') {
       navigate('/get-rls')
     } else if (user && user.role === 'user') {
-      navigate('/dashboard')
+      navigate('/get-rls')
     } else {
       navigate('/dashboard')
     }

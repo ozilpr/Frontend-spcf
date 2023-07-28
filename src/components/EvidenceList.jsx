@@ -37,26 +37,26 @@ const EvidenceList = () => {
     return data.map((evd, index) => {
       return (
         <tr key={evd.gejala_id}>
-          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+          <td className='px-2 py-1 border border-gray-500 text-center align-middle'>
             <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200 text-center align-middle'>
+          <td className='px-2 py-1 border border-gray-500 text-center align-middle'>
             <div style={{ textAlign: 'center' }}>{evd.kode_gejala}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             {evd.nama_gejala}
           </td>
           {user && user.role === 'admin' && (
-            <td className='text-sm font-medium text-center border border-gray-200'>
+            <td className='text-sm font-medium text-center border border-gray-500'>
               <div className='text-center px-2 py-1'>
                 <Link
                   to={`/edit-evd?id=${evd.gejala_id}`}
                   title='Edit'
-                  className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
+                  className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md items-center'
                 >
                   <button
                     title='Edit'
-                    className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md  items-center'
+                    className='sm:text-sm w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-1  mb-1 rounded-md items-center'
                   >
                     Edit
                   </button>
@@ -64,7 +64,7 @@ const EvidenceList = () => {
                 <button
                   title='Remove'
                   onClick={() => deleteEvd(evd.gejala_id)}
-                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md  items-center'
+                  className='sm:text-sm w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-1 mt-1 rounded-md items-center'
                 >
                   Delete
                 </button>
@@ -115,7 +115,7 @@ const EvidenceList = () => {
                   </tr>
                 </thead>
 
-                <tbody>{renderTable()}</tbody>
+                <tbody className='bg-white'>{renderTable()}</tbody>
               </table>
             </div>
           </div>

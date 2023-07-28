@@ -86,6 +86,11 @@ const Sidebar = () => {
                   <IoCaretForwardOutline className='inline' /> Gejala
                 </NavLink>
               </li>
+              <li>
+                <NavLink to={'/get-rls'}>
+                  <IoCaretForwardOutline className='inline' /> Rules
+                </NavLink>
+              </li>
             </div>
           )}
         </ul>
@@ -106,23 +111,20 @@ const Sidebar = () => {
           <div>
             <p className='menu-label'>Settings</p>
             <ul className='menu-list'>
-              <li>
-                <button onClick={logout} className='button is-white'>
-                  <IoLogOut /> Log Out
-                </button>
-              </li>
+              <button onClick={logout} className='button is-white'>
+                <IoLogOut /> Log Out
+              </button>
             </ul>
           </div>
         )}
         {user && user.role === 'user' && (
           <div>
             <p className='menu-label'>Settings</p>
-            <ul className='menu-list'></ul>
-            <li>
+            <ul className='menu-list'>
               <button onClick={logout} className='button is-white'>
                 <IoLogOut /> Log Out
               </button>
-            </li>
+            </ul>
           </div>
         )}
       </aside>

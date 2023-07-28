@@ -60,7 +60,7 @@ const FormEditHpt = () => {
         </div>
 
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
-          <form name='hptForm' onSubmit={saveData}>
+          <form name='hptForm' autocomplete='off' onSubmit={saveData}>
             <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>

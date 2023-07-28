@@ -61,7 +61,7 @@ const FormAddUser = () => {
   const setUserHandler = async (e) => {
     let { value } = e.target
 
-    const re = /^[A-Za-z]+$/
+    const re = /^[A-Za-z ]+$/
     if (value === '' || re.test(value)) {
       value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
       setUser(value)
@@ -94,7 +94,7 @@ const FormAddUser = () => {
           </h1>
         </div>
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
-          <form name='userForm' onSubmit={saveData}>
+          <form name='userForm' autocomplete='off' onSubmit={saveData}>
             <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700 mb-1 mt-4'>

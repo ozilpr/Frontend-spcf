@@ -37,26 +37,30 @@ const RulesList = () => {
     return data.map((rls, index) => {
       return (
         <tr key={rls.id}>
-          <td className='px-2 py-1 border-b border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             <div style={{ textAlign: 'center' }}>{index + 1}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             <div style={{ textAlign: 'center' }}>{'R' + rls.penyakit_id}</div>
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             {rls.tbl_penyakit.nama_penyakit}
           </td>
-          <td className='px-2 py-1 border-b border-gray-200 align-middle'>
+          <td className='px-2 py-1 border border-gray-500 align-middle'>
             {rls.tbl_gejala.nama_gejala}
           </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
-            <div style={{ textAlign: 'center' }}>{rls.mb}</div>
-          </td>
-          <td className='px-2 py-1 border border-gray-200 align-middle'>
-            <div style={{ textAlign: 'center' }}>{rls.md}</div>
-          </td>
           {user && user.role === 'admin' && (
-            <td className='text-sm font-medium border-b border-gray-200 align-middle'>
+            <td className='px-2 py-1 border border-gray-500 align-middle'>
+              <div style={{ textAlign: 'center' }}>{rls.mb}</div>
+            </td>
+          )}
+          {user && user.role === 'admin' && (
+            <td className='px-2 py-1 border border-gray-500 align-middle'>
+              <div style={{ textAlign: 'center' }}>{rls.md}</div>
+            </td>
+          )}
+          {user && user.role === 'admin' && (
+            <td className='text-sm font-medium border border-gray-500 align-middle'>
               <div className='text-center px-2 py-1'>
                 <Link to={`/edit-rls?id=${rls.id}`}>
                   <button
@@ -110,15 +114,18 @@ const RulesList = () => {
                       Nama Penyakit
                     </th>
                     <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
-                      Nama Gejala
+                      Disebabkan oleh Gejala
                     </th>
-                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
-                      MB
-                    </th>
-                    <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
-                      MD
-                    </th>
-
+                    {user && user.role === 'admin' && (
+                      <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
+                        MB
+                      </th>
+                    )}
+                    {user && user.role === 'admin' && (
+                      <th className='px-3 py-3 text-sm font-medium align-middle leading-4 md:w-auto text-black uppercase border-b border-gray-200 bg-gray-50'>
+                        MD
+                      </th>
+                    )}
                     {user && user.role === 'admin' && (
                       <th className='px-6 py-3 text-sm align-middle text-white border-b border-gray-200 bg-black colspan="3"'>
                         Action

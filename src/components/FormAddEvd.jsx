@@ -7,7 +7,7 @@ const FormAddEvd = () => {
   const [evd, setEvd] = useState('')
   const nav = useNavigate()
   const url = 'http://localhost:5000/add-evd'
-  const res = 'http://localhost:5000/get-evd'
+  const res = 'http://localhost:5000/get-allevd'
 
   // error message
   const [msg, setMsg] = useState('')
@@ -49,7 +49,7 @@ const FormAddEvd = () => {
           </h1>
         </div>
         <div className='w-full px-6 py-4 bg-white rounded shadow-md ring-1 ring-gray-900/10'>
-          <form name='evdForm' onSubmit={saveData}>
+          <form name='evdForm' autocomplete='off' onSubmit={saveData}>
             <p className='text-center text-xs text-red-500'>{msg}</p>
             <div>
               <label className='block text-sm font-bold text-gray-700'>
